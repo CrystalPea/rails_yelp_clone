@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       redirect_to '/restaurants'
     else
       if review.errors[:user]
-        flash.next[:error] = review.errors[:user]
+        flash[:notice] = review.errors[:user]
         redirect_to '/restaurants'
       else
         render :new
@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     unless @review.belongs_to?(current_user)
-      flash.next[:error] = ["You cannot delete this review"]
+      flash[:notice] = "You cannot delete this review"
       redirect_to '/restaurants'
     end
 

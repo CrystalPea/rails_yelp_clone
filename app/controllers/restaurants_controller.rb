@@ -29,7 +29,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     unless @restaurant.belongs_to_user?(current_user)
-      flash.next[:error] = ["You cannot edit this restaurant"]
+      flash[:notice] = "You cannot edit this restaurant"
       redirect_to '/restaurants'
     end
 
@@ -46,7 +46,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     unless @restaurant.belongs_to_user?(current_user)
-      flash.next[:error] = ["You cannot edit this restaurant"]
+      flash[:notice] = "You cannot edit this restaurant"
       redirect_to '/restaurants'
     end
 
